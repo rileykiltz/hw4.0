@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
-  def new
+  def create
+    @user = User.new(user_params)
+    @user.password = BCrypt::Password.create(params[:password])
+    if @user.save
+      redirect_to @user
+    else
+      render 'new'
+    end
   end
 
-  def create
-    @user = User.new
-    @user["email"] = params["email"]
-    @user["password"] = params["password"]
-    @user.save
-    redirect_to "/"
+  private
 
-  
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 end
