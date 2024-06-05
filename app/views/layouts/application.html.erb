@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <link rel="stylesheet" href="/stylesheets/application.css">
   </head>
-
   <body>
     <div>
       <%= flash["notice"] %>
     </div>
     <div>
       <a href="/">Home</a>
-      <a href="/logout">Logout</a>
-      <a href="/login">Login</a>
-      <a href="/users/new">Signup</a>
+      <% if @current_user %>
+        <%= form_with url: logout_path, method: :delete do |form| %>
+          <%= form.submit "Logout" %>
+        <% end %>
+      <% else %>
+        <a href="/login">Login</a>
+        <a href="/users/new">Signup</a>
+      <% end %>
     </div>
-
     <%= yield %>
   </body>
 </html>

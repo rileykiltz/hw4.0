@@ -8,8 +8,14 @@ class SessionsController < ApplicationController
       flash[:notice] = "You've logged in."
       redirect_to companies_path
     else
-      flash[:notice] = "Unsuccessful login."
-      redirect_to new_session_path
+      flash[:alert] = "Invalid email or password"
+      render :new
     end
+  end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = "Logged out successfully"
+    redirect_to root_path
   end
 end
