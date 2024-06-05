@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>My Entries</h1>
+
+  <% if @entries.any? %>
+    <ul class="list-unstyled">
+      <% @entries.each do |entry| %>
+        <li>
+          <h3><%= entry.title %></h3>
+          <p><%= entry.description %></p>
+          <p><%= entry.occurred_on %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven't created any entries yet.</p>
+  <% end %>
+
+  <p>
+    <%= link_to "New Entry", new_entry_path, class: "btn btn-primary" %>
+  </p>
+</div>

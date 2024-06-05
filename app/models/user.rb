@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :entries
+
   before_save :hash_password
 
   private
