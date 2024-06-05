@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = User.new(user_params)
-    @user.password = BCrypt::Password.create(params[:password])
     if @user.save
       redirect_to @user
     else
@@ -12,6 +15,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.permit(:username, :email, :password)
   end
 end
