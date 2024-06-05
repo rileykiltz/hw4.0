@@ -1,3 +1,4 @@
 class Entry < ApplicationRecord
   belongs_to :user
-end
+  has_one_attached :uploaded_image
+  end
