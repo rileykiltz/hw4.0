@@ -1,14 +1,18 @@
-<h1>Login</h1>
+<div class="container">
+  <h1>Login</h1>
 
-<form action="/sessions" method="post">
-  <%= csrf_meta_tags %>
-  <p>
-    <label for="email_input">Email</label>
-    <input type="text" name="email" id="email_input">
+  <form action="/sessions" method="post" class="form">
+    <%= csrf_meta_tags %>
+    <div class="form-group">
+      <label for="email_input">Email</label>
+      <input type="text" name="email" id="email_input" class="form-control">
+    </div>
 
-    <label for="password_input">Password</label>
-    <input type="password" name="password" id="password_input">
-  </p>
+    <div class="form-group">
+      <label for="password_input">Password</label>
+      <input type="password" name="password" id="password_input" class="form-control">
+    </div>
 
-  <button>Login</button>
-</form>
+    <button class="btn btn-primary">Login</button>
+  </form>
+</div>
