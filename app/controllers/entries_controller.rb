@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    puts params # Add this line to inspect the received parameters
+    logger.debug "Received params: #{params.inspect}"
     @entry = Entry.new(entry_params)
     @entry.user_id = current_user.id
     if @entry.save
