@@ -1,9 +1,12 @@
 <div class="container">
   <h1>Places</h1>
 
-<p>
-    <a href="/places/new" class="btn btn-primary">New place</a>
-  </p>
+  <% if current_user %>
+    <p>
+      <a href="/places/new" class="btn btn-primary">New place</a>
+    </p>
+  <% end %>
+
 
   <ul class="list-unstyled">
     <% for place in @places %>
@@ -11,5 +14,5 @@
     <% end %>
   </ul>
 
-  
+
 </div>

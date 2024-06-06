@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def index
     @entries = Entry.where(user_id: current_user.id)
   end
@@ -8,6 +10,7 @@ class EntriesController < ApplicationController
   end
 
   def create
+    puts params # Add this line to inspect the received parameters
     @entry = Entry.new(entry_params)
     @entry.user_id = current_user.id
     if @entry.save
